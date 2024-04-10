@@ -52,3 +52,19 @@ N = int(input())
 squares = {i: i **2 for i in range(1, N+1)}
 
 print(squares)
+
+""" Kysymys 4
+Sum of the First n Positive Integers
+Write a program that takes a positive integer, n, as input and then 
+displays the sum of all of the integers from 1 to n. The sum of the
+ first n positive integers can be computed using the formula:
+ sum = n * (n+1)/2 """
+# Read n from the user
+n = int(input())
+
+# Calculate the sum using the formula
+sum_n = n * (n + 1) // 2
+
+# Print the result
+print(f"The sum of the first {n} positive integers is {sum_n}")
+
