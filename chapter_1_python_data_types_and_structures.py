@@ -86,6 +86,11 @@ def count_vowels(s):
     vowels = 'aeiou'
     # Count and sum up the vowels in the string s
     vowel_count = sum(1 for char in s if char in vowels)
+    # OR:
+    # sum = 0
+    # for char in s:
+    #     if char in vowels:
+    #         sum +=1
     return vowel_count
 
 # Read input string from standard input (e.g., Moodle test environment)
@@ -93,3 +98,29 @@ s = input()
 
 # Output the number of vowels
 print(f"Number of vowels: {count_vowels(s)}")
+
+# Kysymys 6
+""" Write a program that sums all of the numbers taken as input,
+ while ignoring any input that is not a valid number.
+Your program should display the current sum after each Number
+ is entered. It should display an error message after each 
+ non-numeric input, and then continue to sum any additional 
+ numbers entered by the user.  The program exits when the user
+  enters 0. 
+Ensure that your program works correctly for both integers 
+and floating-point numbers. """
+
+total = 0.0
+
+while True:
+    user_input = input()
+    if user_input == "0":
+        print(f"The grand total is {total}")
+        break
+    try:
+        number = float(user_input)
+        total += number
+        print(f"The total is now {total}")
+    except ValueError:
+        print("That wasn’t a number.")
+
