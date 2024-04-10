@@ -124,3 +124,52 @@ while True:
     except ValueError:
         print("That wasn’t a number.")
 
+# Kysymys 7
+""" Custom encoder
+Write a function called "custom_encoder" that accepts a string text 
+as parameter and for each char of the text it calculates its 
+0-based position in the following reference string:
+
+reference_string = 'abcdefghijklmnopqrstuvwxyz' """
+
+def custom_encoder(text):
+    reference_string = 'abcdefghijklmnopqrstuvwxyz'
+    positions = []
+    for char in text.lower():  # Convert to lowercase to match the reference string
+        if char in reference_string:
+            positions.append(reference_string.index(char))
+        else:
+            positions.append(-1)
+    return positions
+
+# Kysymys 8
+""" Write a class Person that has a member function hello()
+The output from your program, when called with the code 
+in the Test column, should be exactly as shown in the Result column: """
+
+class Person:
+    def __init__(self, name):
+        self.name = name
+
+    def hello(self):
+       print(f"Hello, my name is {self.name}")
+
+# Kysymys 9
+""" Restaurant
+Make a class called Restaurant. The __init__() method for Restaurant 
+should store two attributes: a restaurant_name and a cuisine_type. 
+Make a method called describe_restaurant() that prints these two 
+pieces of information, and a method called open_restaurant() that
+ prints a message indicating that the restaurant is open. """
+
+class Restaurant:
+    def __init__(self, restaurant_name, cuisine_type):
+        self.name = restaurant_name
+        self.cuisine_type = cuisine_type
+
+    def describe_restaurant(self):
+        print(f"{self.name} serves wonderful {self.cuisine_type}.")
+
+    def open_restaurant(self):
+        print(f"{self.name} is open. Come on in!")
+
