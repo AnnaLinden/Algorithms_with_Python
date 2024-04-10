@@ -68,3 +68,28 @@ sum_n = n * (n + 1) // 2
 # Print the result
 print(f"The sum of the first {n} positive integers is {sum_n}")
 
+""" Kysymys 5
+Count vowels
+Assume s is a string of lower case characters.
+Write a program that counts up the number of vowels contained in 
+the string s. 
+Valid vowels are: 'a', 'e', 'i', 'o', and 'u'.
+
+For example, if s = 'hello', your program should print:
+
+Number of vowels: 2 """
+
+def count_vowels(s):
+    # Convert s to lowercase to ensure case-insensitive counting
+    s = s.lower()
+    # Define the vowels
+    vowels = 'aeiou'
+    # Count and sum up the vowels in the string s
+    vowel_count = sum(1 for char in s if char in vowels)
+    return vowel_count
+
+# Read input string from standard input (e.g., Moodle test environment)
+s = input()
+
+# Output the number of vowels
+print(f"Number of vowels: {count_vowels(s)}")
