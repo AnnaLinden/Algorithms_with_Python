@@ -173,3 +173,58 @@ class Restaurant:
     def open_restaurant(self):
         print(f"{self.name} is open. Come on in!")
 
+# Kysymys 10
+""" User
+Make a class called `User`. Create the following attributes: 
+first_name and last_name, email, and location. Make a method 
+called describe_user() that prints a summary of the user's 
+information. Make another method called greet_user() that 
+prints a personalized greeting to the user.
+The output from your program, when called with the code in 
+the Test column, should be exactly as shown in the Result column: """
+class User:
+    def __init__(self, first_name, last_name, username, email, location):
+        self.first_name = first_name
+        self.last_name = last_name
+        self.username = username
+        self.email = email
+        self.location = location
+
+    def describe_user(self):
+        print(f"Name: {self.first_name} {self.last_name}")
+        print(f"Username: {self.username}")
+        print(f"Email: {self.email}")
+        print(f"Location: {self.location}")
+
+    def greet_user(self):
+        print(f"Welcome back {self.username}!")
+
+#Kysymys 11
+# Write a function to combine two lists
+def combine_lists(list1, list2):
+    # Initialize the index for both lists
+    index1, index2 = 0, 0
+    combined_list = []
+
+    # Iterate until one list is completely traversed
+    while index1 < len(list1) and index2 < len(list2):
+        if list1[index1] < list2[index2]:
+            combined_list.append(list1[index1])
+            index1 += 1
+        else:
+            combined_list.append(list2[index2])
+            index2 += 1
+    
+    # Add remaining elements of list1, if any
+    while index1 < len(list1):
+        combined_list.append(list1[index1])
+        index1 += 1
+    
+    # Add remaining elements of list2, if any
+    while index2 < len(list2):
+        combined_list.append(list2[index2])
+        index2 += 1
+
+    return combined_list
+
+    
