@@ -312,6 +312,44 @@ class IntArray():
         self._resmem = new_resmem
         self._size += 1
 
+    def remove(self, index:int) -> int:
+        ### Remove this comment and the `pass` line and write your code here!
+        if self._size == 0:
+            return None
+        #Validate the index
+        if not 0 <= index < self._size:
+            raise IndexError('Index is out of bounds!')
+
+        # retrieve the values at the given index
+        val = self. __getitem__(index)
+
+        # decrease the size of the array
+        self._size -= 1
+
+        #If the array is now empty, clear the reserved memory
+        if self._size == 0:
+            self._resmem = None
+            return val
+
+        # otherwise prepare a new memory area with the reduced size
+        new_resmem = ReservedMemory(self._size * self._bytes_per_element)
+        
+        # copy elements before the removal index
+        if index> 0:
+            new_resmem.copy(self._resmem, count= index * self._bytes_per_element)
+            
+        # copy elements after the removal index to the new position
+        if index <= self._size:
+            new_resmem.copy(self._resmem, source_index=(index+1) * self._bytes_per_element, destination_index=index * self._bytes_per_element, count=(self._size - index) * self._bytes_per_element)
+            
+        # update to use the new memory area
+        self._resmem = new_resmem
+        
+        return val
+
+
+
+
 
 # Test Script for IntArray class
 def test_int_array():
@@ -352,5 +390,49 @@ def test_int_array():
     large_array.insert(2, 12345678)
     print("Large array with insert:", large_array)
 
+def test_remove():
+    print("Test 1: Remove from middle")
+    array = IntArray()
+    for i in range(6):  # Create an array [0, 1, 2, 3, 4, 5]
+        array.append(i)
+    val = array.remove(3)  # Remove element at index 3 (value 3)
+    print(f"Removed Value: {val}, Array after removal: {array}")  # Expected: [0, 1, 2, 4, 5]
+
+    print("\nTest 2: Remove from start")
+    array = IntArray()
+    for i in range(6):
+        array.append(i)
+    val = array.remove(0)  # Remove first element
+    print(f"Removed Value: {val}, Array after removal: {array}")  # Expected: [1, 2, 3, 4, 5]
+
+    print("\nTest 3: Remove from end")
+    array = IntArray()
+    for i in range(6):
+        array.append(i)
+    val = array.remove(5)  # Remove last element
+    print(f"Removed Value: {val}, Array after removal: {array}")  # Expected: [0, 1, 2, 3, 4]
+
+    print("\nTest 4: Remove with index out of bounds")
+    array = IntArray()
+    for i in range(6):
+        array.append(i)
+    try:
+        array.remove(6)  # Attempt to remove non-existent element
+    except IndexError as e:
+        print(f"Caught an exception as expected: {e}")
+
+    print("\nTest 5: Remove from empty array")
+    array = IntArray()
+    val = array.remove(0)  # Attempt to remove from an empty array
+    print(f"Expected None, got: {val}")
+
+    print("\nTest 6: Comprehensive removal")
+    array = IntArray(bytes_per_element=3)
+    for i in range(6):
+        array.append(i)
+    while len(array) > 0:
+        print(f"Removing {array.remove(0)}, New array: {array}")  # Sequentially remove all elements
+
+test_remove()
 test_int_array()
 
