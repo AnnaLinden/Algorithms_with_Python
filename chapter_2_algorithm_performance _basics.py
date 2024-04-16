@@ -285,6 +285,7 @@ class IntArray():
         # Return the last element's value that was stored at the beginning
         return val
     
+    #exercise 1
     def insert(self, index:int, val:int) -> None:
         ### Remove this comment and the `return` line and write your code here!
         # Validate the index to be within bounds for insertion
@@ -312,6 +313,7 @@ class IntArray():
         self._resmem = new_resmem
         self._size += 1
 
+    # exercise 2
     def remove(self, index:int) -> int:
         ### Remove this comment and the `pass` line and write your code here!
         if self._size == 0:
@@ -346,10 +348,25 @@ class IntArray():
         self._resmem = new_resmem
         
         return val
+    # exercise 3
+    def search(self, value: int) -> int:
+        """
+        Search method for the array
+
+        Parameters:
+        - 'value': value to search
+
+        Returns:
+          First index position where the value is found or -1 if not found
+        """
+        for index in range(self._size):
+            if self.__getitem__(index) == value:
+                return index
+        return -1
 
 
 
-
+# TESTING THE EXERCISES
 
 # Test Script for IntArray class
 def test_int_array():
@@ -433,6 +450,51 @@ def test_remove():
     while len(array) > 0:
         print(f"Removing {array.remove(0)}, New array: {array}")  # Sequentially remove all elements
 
-test_remove()
+def test_search():
+    print("Test 1: Search for existing value")
+    array = IntArray()
+    for i in range(6):  # Create an array [0, 2, 4, 6, 8, 10]
+        array.append(i * 2)
+    print("Index of 8:", array.search(8))  # Should return 4
+
+    print("\nTest 2: Search for a value at the beginning")
+    array = IntArray()
+    for i in range(6):  # Create an array [1000, 999, 998, 997, 996, 995]
+        array.append(1000 - i)
+    print("Index of 1000:", array.search(1000))  # Should return 0
+
+    print("\nTest 3: Search for a value at the end")
+    array = IntArray()
+    for i in range(6):
+        array.append(1000 - i)
+    print("Index of 995:", array.search(995))  # Should return 5
+
+    print("\nTest 4: Search after modifications")
+    array = IntArray()
+    for i in range(6):
+        array.append(1000 - i)
+    array.pop()  # Removes last item (995)
+    array.append(500)  # Append 500 at the end
+    print("Index of 500:", array.search(500))  # Should return 5
+
+    print("\nTest 5: Search for non-existing value")
+    array = IntArray()
+    for i in range(6):
+        array.append(1000 - i)
+    print("Index of 1001:", array.search(1001))  # Should return -1
+
+    print("\nTest 6: Search for repeated values")
+    array = IntArray()
+    for i in range(3):
+        array.append(2)  # Create an array [2, 2, 2]
+    array.append(3)  # Now array is [2, 2, 2, 3]
+    print("First index of 2:", array.search(2))  # Should return 0
+    print("Index of 3:", array.search(3))  # Should return 3
+
+
+
+
 test_int_array()
+test_remove()
+test_search()
 
