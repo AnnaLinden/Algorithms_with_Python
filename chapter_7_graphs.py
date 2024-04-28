@@ -74,7 +74,7 @@ g.add_edge('A', 'B')
 g.add_edge('A', 'C')
 g.add_edge('B', 'D')
 
-# Now you can test your DFS and BFS functions
+# test DFS and BFS functions
 visited_dfs = DFS(g, 'A')
 print("DFS Visited Order:", visited_dfs)
 
