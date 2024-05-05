@@ -63,18 +63,18 @@ class Singly_Linked_List:
 
 # Example usage:
 # Create a singly linked list
-sll = Singly_Linked_List()
-sll.append(1)
-sll.append(2)
-sll.append(3)
-sll.append(4)
-sll.append(5)
+# sll = Singly_Linked_List()
+# sll.append(1)
+# sll.append(2)
+# sll.append(3)
+# sll.append(4)
+# sll.append(5)
 
-print("Original list:")
-sll.print_list()
+# print("Original list:")
+# sll.print_list()
 
-# Reverse the list
-sll.reverse()
+# # Reverse the list
+# sll.reverse()
 
-print("Reversed list:")
-sll.print_list()
+# print("Reversed list:")
+# sll.print_list()
