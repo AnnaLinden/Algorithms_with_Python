@@ -45,12 +45,12 @@ def get_groups(map):
     return group_count
 
 # Test case
-map_example = [
-    [1, 1, 1, 0, 1],
-    [1, 1, 0, 0, 1],
-    [0, 0, 0, 0, 1],
-    [1, 0, 1, 0, 0],
-    [1, 1, 0, 0, 1]
-]
+# map_example = [
+#     [1, 1, 1, 0, 1],
+#     [1, 1, 0, 0, 1],
+#     [0, 0, 0, 0, 1],
+#     [1, 0, 1, 0, 0],
+#     [1, 1, 0, 0, 1]
+# ]
 
-print(get_groups(map_example))  # Expected: 4
+# print(get_groups(map_example))  # Expected: 4
